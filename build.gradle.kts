@@ -1,15 +1,36 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+//PLugins
 plugins {
 	id("org.springframework.boot") version "2.5.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.5.21"
 	kotlin("plugin.spring") version "1.5.21"
+	jacoco
 }
 
+
+//Setup
 group = "com.gnovoab.example"
-version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+//Jar Settings
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+	archiveFileName.set("booty.jar")
+}
+
+tasks.getByName<Jar>("jar") {
+	enabled = false
+}
+
+//Code coverage
+tasks.jacocoTestReport {
+	reports {
+		xml.required.set(false)
+		csv.required.set(false)
+		html.required.set(true)
+	}
+}
 
 configurations {
 	compileOnly {
@@ -38,7 +59,6 @@ dependencies {
 	//Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-
 	// swagger for API visualization
 	implementation("org.springdoc:springdoc-openapi-ui:1.5.10")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.5.10")
@@ -53,4 +73,5 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	finalizedBy(tasks.jacocoTestReport)
 }
