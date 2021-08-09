@@ -1,27 +1,20 @@
-
-//Namespace
 package com.gnovoab.example.demo.repository
 
-//Imports
 import com.gnovoab.example.demo.domain.model.Product
 import com.gnovoab.example.demo.factory.ObjectFactory
 import com.gnovoab.example.demo.respository.ProductRepository
-import org.apache.commons.lang3.RandomStringUtils
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.transaction.TransactionSystemException
-import java.math.BigDecimal
 
 /**
  * Integration Test Class
  */
 @ActiveProfiles("integrationTest")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ProductRepositoryTest (@Autowired val productRepository: ProductRepository) {
+class ProductRepositoryTest(@Autowired val productRepository: ProductRepository) {
 
     @Test
     internal fun createtAndUpdateTest() {

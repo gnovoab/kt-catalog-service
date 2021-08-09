@@ -1,8 +1,5 @@
-
-//Namespace
 package com.gnovoab.example.demo.controller
 
-//Imports
 import com.gnovoab.example.demo.domain.api.ApiErrorResponse
 import com.gnovoab.example.demo.domain.model.Product
 import com.gnovoab.example.demo.service.ProductService

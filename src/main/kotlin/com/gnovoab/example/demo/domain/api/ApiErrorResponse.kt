@@ -1,8 +1,5 @@
-
-//Namespace
 package com.gnovoab.example.demo.domain.api
 
-//Imports
 import com.fasterxml.jackson.annotation.JsonInclude
 import org.springframework.http.HttpStatus
 
@@ -12,11 +9,16 @@ import org.springframework.http.HttpStatus
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class ApiErrorResponse: ApiMessageResponse{
 
-    constructor(status: HttpStatus, message: String): super(status, message){
+    var errors: List<String>? = null
 
+    constructor(status: HttpStatus, message: String): super(status, message){
+        super.status = status
+        super.message = message
     }
 
     constructor(status: HttpStatus, message: String, errors: List<String>): super(status, message) {
-
+        this.errors = errors
+        super.status = status
+        super.message = message
     }
 }

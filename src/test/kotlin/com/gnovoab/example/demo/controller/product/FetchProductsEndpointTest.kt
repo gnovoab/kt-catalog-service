@@ -1,8 +1,5 @@
-
-//Namespace
 package com.gnovoab.example.demo.controller.product
 
-//Imports
 import com.gnovoab.example.demo.domain.model.Product
 import com.gnovoab.example.demo.factory.ObjectFactory
 import com.gnovoab.example.demo.respository.ProductRepository
@@ -20,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles
 /**
  * Integration Test Class
  */
+@Suppress("ClassOrdering")
 @ActiveProfiles("integrationTest")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FetchProductsEndpointTest(

@@ -94,6 +94,7 @@ class GlobalExceptionHandler: ResponseEntityExceptionHandler() {
     /**
      *  ConstraintViolationException handler
      */
+    @Suppress("UnusedPrivateMember")
     @ExceptionHandler(ConstraintViolationException::class)
     fun handleConstraintViolation( ex:ConstraintViolationException, request: WebRequest ): ResponseEntity<Any>{
         val errors = arrayListOf<String>()
@@ -109,19 +110,11 @@ class GlobalExceptionHandler: ResponseEntityExceptionHandler() {
     /**
      *  MethodArgumentTypeMismatch handler
      */
+    @Suppress("UnusedPrivateMember")
     @ExceptionHandler(value = [(MethodArgumentTypeMismatchException::class)])
     fun handleMethodArgumentTypeMismatch(ex: MethodArgumentTypeMismatchException, request: WebRequest): ResponseEntity<Any>{
         val error = ex.name + " should be of type " + ex.requiredType!!.name
         val apiErrorResponse = ApiErrorResponse(HttpStatus.BAD_REQUEST, ex.localizedMessage, listOf(error))
         return ResponseEntity<Any>(apiErrorResponse, HttpHeaders(), apiErrorResponse.status)
     }
-
-
-
-
-
-
-
-
-
 }

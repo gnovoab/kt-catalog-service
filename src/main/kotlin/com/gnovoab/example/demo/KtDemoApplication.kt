@@ -1,8 +1,5 @@
-
-//Namesapce
 package com.gnovoab.example.demo
 
-//Imports
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -13,5 +10,6 @@ import org.springframework.boot.runApplication
 class KtDemoApplication
 
 fun main(args: Array<String>) {
+	@Suppress("SpreadOperator")
 	runApplication<KtDemoApplication>(*args)
 }

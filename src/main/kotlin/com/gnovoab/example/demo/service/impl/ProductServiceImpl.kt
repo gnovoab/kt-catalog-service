@@ -1,14 +1,9 @@
-
-//Namespace
 package com.gnovoab.example.demo.service.impl
 
-
-//Imports
 import com.gnovoab.example.demo.domain.model.Product
 import com.gnovoab.example.demo.respository.ProductRepository
 import com.gnovoab.example.demo.service.ProductService
 import org.springframework.stereotype.Service
-
 
 /**
  * Class hat handles operations regarding products

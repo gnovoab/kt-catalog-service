@@ -1,8 +1,6 @@
 
-//Namespace
 package com.gnovoab.example.demo.respository
 
-//Imports
 import com.gnovoab.example.demo.domain.model.Product
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository

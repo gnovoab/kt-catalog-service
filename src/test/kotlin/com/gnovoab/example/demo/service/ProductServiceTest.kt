@@ -1,13 +1,9 @@
-
-//Namespace
 package com.gnovoab.example.demo.service
 
-//Imports
 import com.gnovoab.example.demo.factory.ObjectFactory
 import com.gnovoab.example.demo.respository.ProductRepository
 import com.gnovoab.example.demo.service.impl.ProductServiceImpl
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify

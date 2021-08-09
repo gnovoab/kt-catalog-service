@@ -6,7 +6,12 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.5.21"
 	kotlin("plugin.spring") version "1.5.21"
+	id("io.gitlab.arturbosch.detekt").version("1.18.0-RC3")
 	jacoco
+}
+
+repositories {
+	mavenCentral()
 }
 
 
@@ -23,6 +28,22 @@ tasks.getByName<Jar>("jar") {
 	enabled = false
 }
 
+// detek settings
+
+detekt {
+	buildUponDefaultConfig = true // preconfigure defaults
+	allRules = false // activate all available (even unstable) rules.
+	config = files("$projectDir/codequality/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+
+	reports {
+		html.enabled = true // observe findings in your browser with structure and code snippets
+		xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+		txt.enabled = true // similar to the console output, contains issue signature to manually edit baseline files
+		sarif.enabled = true // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with Github Code Scanning
+	}
+}
+
+
 //Code coverage
 tasks.jacocoTestReport {
 	reports {
@@ -38,9 +59,7 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
+
 
 dependencies {
 
@@ -70,6 +89,7 @@ dependencies {
 
 	//DB
 	runtimeOnly("com.h2database:h2")
+
 }
 
 tasks.withType<KotlinCompile> {

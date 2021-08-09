@@ -1,8 +1,5 @@
-
-//Namespace
 package com.gnovoab.example.demo
 
-//Imports
 import com.fasterxml.jackson.databind.JsonNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -20,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class KtDemoApplicationTests(@Autowired val restTemplate: TestRestTemplate) {
 
+	@Suppress("EmptyFunctionBlock")
 	@Test
 	internal fun contextLoads() {
 	}

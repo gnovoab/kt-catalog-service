@@ -1,14 +1,10 @@
-
-//Namespace
 package com.gnovoab.example.demo.domain.model
 
-//Imports
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.*
-
 
 @Entity
 class Product (
