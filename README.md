@@ -1,12 +1,12 @@
 # Product Catalog Service
-Sprin Boot - Kotlin Demo app
+Product Catalog Management Microservice
 
 
 ### Running the application
 * Run `gradle build`
 * Run `gradle bootRun`
 
-### Endpoints
 
-[http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html  ) 
+### Endpoints
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html  ) 
  

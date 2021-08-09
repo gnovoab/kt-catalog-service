@@ -1,5 +1,8 @@
+
+//Namespace
 package com.gnovoab.example.demo
 
+//Imports
 import com.fasterxml.jackson.databind.JsonNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -10,27 +13,26 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ActiveProfiles
 
-
+/**
+ * Integration Test Class
+ */
 @ActiveProfiles("integrationTest")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class KtDemoApplicationTests {
-
-	@Autowired
-	lateinit var restTemplate: TestRestTemplate
+class KtDemoApplicationTests(@Autowired val restTemplate: TestRestTemplate) {
 
 	@Test
-	fun contextLoads() {
+	internal fun contextLoads() {
 	}
 
 	@Test
-	fun healthOk() {
+	internal fun healthOk() {
 		val result = restTemplate.getForEntity("/actuator/health", JsonNode::class.java)
 		Assertions.assertNotNull(result)
 		Assertions.assertEquals(HttpStatus.OK, result.getStatusCode())
 	}
 
 	@Test
-	fun swaggerOK() {
+	internal fun swaggerOK() {
 		val result: ResponseEntity<String> = restTemplate.getForEntity("/swagger-ui.html", String::class.java)
 		Assertions.assertEquals(HttpStatus.OK, result.statusCode)
 	}

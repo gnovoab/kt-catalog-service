@@ -16,7 +16,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 //Jar Settings
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-	archiveFileName.set("booty.jar")
+	archiveFileName.set("catalog-service.jar")
 }
 
 tasks.getByName<Jar>("jar") {
@@ -43,11 +43,15 @@ repositories {
 }
 
 dependencies {
-	//Web
-	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	//Actuator
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+	//Web
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	//JPA
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 	//Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -58,10 +62,14 @@ dependencies {
 
 	//Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
 
 	// swagger for API visualization
 	implementation("org.springdoc:springdoc-openapi-ui:1.5.10")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.5.10")
+
+	//DB
+	runtimeOnly("com.h2database:h2")
 }
 
 tasks.withType<KotlinCompile> {
