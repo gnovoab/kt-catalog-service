@@ -26,6 +26,40 @@ import org.springframework.web.bind.annotation.RestController
 class ProductController(private val productService: ProductService) {
 
     /**
+     * Fetch all products
+     * @return
+     */
+    @Operation(summary = "Fetch all active and inactive products", description = "All products", tags = ["product"])
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Successful operation",
+                content = [(Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    array = (ArraySchema(schema = Schema(implementation = Product::class)))
+                ))]
+            ),
+            ApiResponse(
+                responseCode = "500", description = "The service encountered a problem.",
+                content = [(Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    array = (ArraySchema(schema = Schema(implementation = ApiErrorResponse::class)))
+                ))]
+            )
+        ]
+    )
+    @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun fetchAllProducts(): ResponseEntity<Iterable<Product>> {
+
+        //Retrieve products
+        val products:Iterable<Product> = productService.fetchProducts()
+
+        //Return the products
+        return ResponseEntity(products, HttpStatus.OK)
+    }
+
+
+    /**
      * Fetch active products
      * @return
      */
@@ -52,7 +86,7 @@ class ProductController(private val productService: ProductService) {
     fun fetchActiveProducts(): ResponseEntity<Iterable<Product>> {
 
         //Retrieve products
-        val products:Iterable<Product> = productService.fetchProducts()
+        val products:Iterable<Product> = productService.fetchActiveProducts()
 
         //Return the products
         return ResponseEntity(products, HttpStatus.OK)

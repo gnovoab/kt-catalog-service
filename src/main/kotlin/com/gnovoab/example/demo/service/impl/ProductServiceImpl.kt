@@ -13,7 +13,15 @@ private val LOGGER = KotlinLogging.logger {}
  */
 @Service
 class ProductServiceImpl ( private val productRespository: ProductRepository): ProductService  {
+
     override fun fetchProducts(): Iterable<Product> {
+        LOGGER.info { "Fetching active and inactive products" }
+        val products = productRespository.findAll()
+        LOGGER.info { "Returning active and inactive products" }
+        return products
+    }
+
+    override fun fetchActiveProducts(): Iterable<Product> {
         LOGGER.info { "Fetching active products" }
         val products = productRespository.findByActiveTrue()
         LOGGER.info { "Returning active products" }

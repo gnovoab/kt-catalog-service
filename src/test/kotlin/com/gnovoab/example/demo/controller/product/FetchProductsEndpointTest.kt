@@ -4,7 +4,6 @@ import com.gnovoab.example.demo.domain.model.Product
 import com.gnovoab.example.demo.factory.ObjectFactory
 import com.gnovoab.example.demo.respository.ProductRepository
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -28,7 +27,6 @@ class FetchProductsEndpointTest(
         const val BASE_URL = "/api/v1/products"
     }
 
-    @Disabled("Disabled until is up!")
     @Test
     internal fun fetchProductsTest() {
 

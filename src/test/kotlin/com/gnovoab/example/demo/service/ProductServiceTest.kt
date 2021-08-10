@@ -28,13 +28,33 @@ class ProductServiceTest {
         val products = arrayListOf(ObjectFactory.generateSampleProduct(), ObjectFactory.generateSampleProduct(), ObjectFactory.generateSampleProduct())
 
         //Set behaviour
-        whenever(productRepository.findByActiveTrue()).thenReturn(products)
+        whenever(productRepository.findAll()).thenReturn(products)
 
         //Execute
         productService.fetchProducts()
 
         //Verify
-        verify(productRepository, times(1)).findByActiveTrue()
+        verify(productRepository, times(1)).findAll()
+    }
 
+    @Test
+    internal fun fetchActiveProductsTest() {
+        //Create Mock
+        val productRepository : ProductRepository = mock()
+
+        //Inject Mock
+        val productService = ProductServiceImpl(productRepository)
+
+        //Create object to be returned
+        val products = arrayListOf(ObjectFactory.generateSampleProduct(), ObjectFactory.generateSampleProduct(), ObjectFactory.generateSampleProduct())
+
+        //Set behaviour
+        whenever(productRepository.findByActiveTrue()).thenReturn(products)
+
+        //Execute
+        productService.fetchActiveProducts()
+
+        //Verify
+        verify(productRepository, times(1)).findByActiveTrue()
     }
 }
