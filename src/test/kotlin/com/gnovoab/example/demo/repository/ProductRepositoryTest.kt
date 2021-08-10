@@ -57,4 +57,6 @@ class ProductRepositoryTest(@Autowired val productRepository: ProductRepository)
         Assertions.assertEquals(productsActiveCount + 1, productRepository.findByActiveTrue().count())
         Assertions.assertEquals(productsCount + 2, productRepository.count())
     }
+
+
 }

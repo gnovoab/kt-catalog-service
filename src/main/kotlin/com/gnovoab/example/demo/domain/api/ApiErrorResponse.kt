@@ -21,4 +21,6 @@ class ApiErrorResponse: ApiMessageResponse{
         super.status = status
         super.message = message
     }
+
+
 }

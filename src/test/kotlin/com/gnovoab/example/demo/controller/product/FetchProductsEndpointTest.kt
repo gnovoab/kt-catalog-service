@@ -86,7 +86,10 @@ class FetchProductsEndpointTest(
 
 
     @Test
-    internal fun fetchProductWrongPath() {
+    internal fun fetchProduct() {
+        //Prepopulate DB
+        val dbProduct = productRepository.save(ObjectFactory.generateSampleProduct())
+
         //Set the headers
         val requestHeaders = HttpHeaders()
         requestHeaders.contentType = MediaType.APPLICATION_JSON
@@ -95,9 +98,35 @@ class FetchProductsEndpointTest(
         val request: HttpEntity<*> = HttpEntity<Any>(requestHeaders)
 
         //Invoke the API service
-        val response = restTemplate.exchange<Any>(BASE_URL + "/a", HttpMethod.GET, request, object : ParameterizedTypeReference<Any?>() {})
+        val response = restTemplate.exchange<Product>(BASE_URL + "/" + dbProduct.id, HttpMethod.GET, request, object : ParameterizedTypeReference<Product?>() {})
+
+        //Verify
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertNotNull(response.body)
+        Assertions.assertEquals(dbProduct.id, response.body!!.id)
+        Assertions.assertEquals(dbProduct.name, response.body!!.name)
+        Assertions.assertEquals(dbProduct.price!!.toDouble(), response.body!!.price!!.toDouble())
+        Assertions.assertEquals(dbProduct.picture, response.body!!.picture)
+        Assertions.assertEquals(dbProduct.active, response.body!!.active)
+
+    }
+
+
+    @Test
+    internal fun fetchProductDontExist() {
+        //Set the headers
+        val requestHeaders = HttpHeaders()
+        requestHeaders.contentType = MediaType.APPLICATION_JSON
+
+        //Create the http request
+        val request: HttpEntity<*> = HttpEntity<Any>(requestHeaders)
+
+        //Invoke the API service
+        val response = restTemplate.exchange<Any>(BASE_URL + "/" + -1, HttpMethod.GET, request, object : ParameterizedTypeReference<Any?>() {})
 
         //Verify
         Assertions.assertEquals(HttpStatus.NOT_FOUND, response.statusCode)
     }
+
+
 }

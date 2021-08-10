@@ -58,6 +58,10 @@ coroutines:
   SuspendFunWithFlowReturnType:
     active: true
 
+empty-blocks:
+  EmptySecondaryConstructor:
+    active: false
+
 exceptions:
   InstanceOfCheckForException:
     active: true
