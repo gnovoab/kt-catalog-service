@@ -10,7 +10,7 @@ import javax.validation.constraints.*
 class Product (
     //Fields
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null,
 
     @Column(unique = true)
     var uuid: UUID? = null,

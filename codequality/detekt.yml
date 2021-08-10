@@ -61,6 +61,8 @@ coroutines:
 empty-blocks:
   EmptySecondaryConstructor:
     active: false
+  EmptyClassBlock:
+    active: false
 
 exceptions:
   InstanceOfCheckForException:

@@ -79,6 +79,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+
+
 	//Metadata
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
@@ -92,6 +94,9 @@ dependencies {
 
 	//DB
 	runtimeOnly("com.h2database:h2")
+
+	//Jackson
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
 }
 
