@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.RestController
 @Tag(name = "PRODUCT", description = "Everything regarding product catalog operations")
 @RestController
 @RequestMapping("/api/v1/products")
-class ProductController(
-    private val productService: ProductService
-) {
+class ProductController(private val productService: ProductService) {
 
     /**
      * Fetch active products
@@ -37,14 +35,14 @@ class ProductController(
             ApiResponse(
                 responseCode = "200", description = "Successful operation",
                 content = [(Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
                     array = (ArraySchema(schema = Schema(implementation = Product::class)))
                 ))]
             ),
             ApiResponse(
                 responseCode = "500", description = "The service encountered a problem.",
                 content = [(Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
                     array = (ArraySchema(schema = Schema(implementation = ApiErrorResponse::class)))
                 ))]
             )

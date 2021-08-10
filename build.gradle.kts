@@ -72,6 +72,9 @@ dependencies {
 	//JPA
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+	//Logging
+	implementation("io.github.microutils:kotlin-logging-jvm:2.0.10")
+
 	//Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
