@@ -31,7 +31,8 @@ class CreateProductEndpoint (@Autowired val restTemplate: TestRestTemplate){
         //Create payload
         val productRequestPayload = CreateProductRequest(
            ObjectFactory.generateSampleProduct(),
-           Integer.valueOf(RandomStringUtils.randomNumeric(1,3)))
+           RandomStringUtils.randomNumeric(1,3).toInt()
+        )
 
 
         //Set the headers
